@@ -12,6 +12,8 @@ jobs:
 
     name: PHPStan - FOSSBilling Preview
     steps:
+      - uses: actions/checkout@v3
+
       - name: Checkout FOSSBilling Source Code
         uses: actions/checkout@v3
         with:
@@ -22,6 +24,7 @@ jobs:
         uses: php-actions/composer@v6
         with:
           args: --working-dir=FOSSBilling
+          dev: no
 
       - name: Run PHPStan
         uses: php-actions/phpstan@v3
@@ -35,6 +38,8 @@ jobs:
 
     name: PHPStan - FOSSBilling Release
     steps:
+      - uses: actions/checkout@v3
+
       - name: Get the Latest FOSSBilling Release Tag
         uses: oprypin/find-latest-tag@v1
         with:
@@ -54,12 +59,14 @@ jobs:
         uses: php-actions/composer@v6
         with:
           args: --working-dir=FOSSBilling/src
+          dev: no
 
       - name: Install Composer Dependencies (>=0.5.0)
         if: ${{ hashFiles('FOSSBilling/composer.json') }}
         uses: php-actions/composer@v6
         with:
           args: --working-dir=FOSSBilling/
+          dev: no
 
       - name: Run PHPStan
         uses: php-actions/phpstan@v3
