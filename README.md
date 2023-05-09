@@ -8,7 +8,7 @@ In general, we use modules to extend the functionality of FOSSBilling.
 
 All modules can communicate with the other modules using their API endpoints.
 
-# Technical requirements about modules
+## Technical requirements about modules
 
 ## Required
 
@@ -35,8 +35,22 @@ All modules can communicate with the other modules using their API endpoints.
 
 We recommend hosting your extensions on a public [GitHub](https://github.com) repository.
 
+### Automated compatibility checking
+
+As FOSSBilling evolves and matures, its internal functionality changes, which can create compatibility issues between your module and FOSSBilling.
+To help developers catch these issues early on, we've designed a workflow that enables you to perform a PHPStan analysis of your module with both the latest FOSSBilling release and its preview builds.
+While PHPStan cannot perform live tests, it's a useful tool to verify that your module doesn't reference missing functions, use incorrect types, or have other common low-level issues.
+
+#### Setup
+
+More in-depth instructions are planned. For now, check out the required files:
+
+* [php-ci.yml](https://github.com/FOSSBilling/example-module/blob/main/.github/workflows/php-ci.yml)
+* [phpstan.neon](https://github.com/FOSSBilling/example-module/blob/main/phpstan.neon)
+
 ## Licensing
 This extension is open source software and is released under the Apache v2.0 license. See [LICENSE](LICENSE) for the full license terms.
 
 This product includes the following third party work:
 * Open Source Iconography by [Pictogrammers](https://pictogrammers.com/) licensed under the [Pictogrammers Free License](https://pictogrammers.com/docs/general/license/).
+* We recommend hosting your extensions on a public [GitHub](https://github.com) repository.
