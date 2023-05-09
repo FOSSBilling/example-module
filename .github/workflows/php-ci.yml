@@ -9,7 +9,6 @@ on:
 jobs:
   phpstan:
     runs-on: ubuntu-latest
-    needs: [composer]
 
     name: PHPStan - FOSSBilling Preview
     steps:
