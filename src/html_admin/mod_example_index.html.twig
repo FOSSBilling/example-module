@@ -6,8 +6,8 @@
 
 {% block content %}
 <div class="card">
-	<div class="card-header">
-		<h3 class="card-title">Example module for developers</h3>
+    <div class="card-header">
+        <h3 class="card-title">Example module for developers</h3>
     </div>
     <!-- First card -->
     <div class="card-body">
@@ -24,7 +24,23 @@
         </ul>
     </div>
 
-    {# Check if example parameters passed to template file #}
+    <div class="card-header">
+        <h3>Permission tests</h3>
+    </div>
+    <div class="card-body">
+        <p>Check if you have permission to do "something"</p>
+        <button class="btn btn-primary" onclick="checkCanDoSomething();">Check</button>
+
+        <p>Check if you are assigned a specific option from a "select" permission type.</p>
+        <select id="check-against">
+            <option value="value_1">Value 1</option>
+            <option value="value_2">Value 2</option>
+            <option value="value_3">Value 3</option>
+        </select>
+        <button class="btn btn-primary" onclick="checkConstraintPermission();">Check</button>
+    </div>
+
+    {# Check if example parameters passed to the template file #}
     {% if youparamname %}
     <div class="card-header">
         <h5>{{ 'Parameters from Controller'|trans }}</h5>
@@ -34,37 +50,60 @@
     </div>
     {% endif %}
 
-    {# Check if example parameters passed to template file #}
+    {# Check if example parameters passed to the template file #}
     {% if userid %}
-        <div class="card-header">
-            <h5>{{ 'Parameters from URL'|trans }}</h5>
-        </div>
-        <div class="card-body">
-            <p>You have passed parameter userid: <strong>{{ userid }}</strong></p>
-        </div>
+    <div class="card-header">
+        <h5>{{ 'Parameters from URL'|trans }}</h5>
+    </div>
+    <div class="card-body">
+        <p>You have passed parameter userid: <strong>{{ userid }}</strong></p>
+    </div>
     {% endif %}
 
     {% if api_example %}
-        {# API example #}
-        <div class="card-header">
-            <h5>{{ 'API example'|trans }}</h5>
-        </div>
-        <div class="card-body">
-            <h5 class="pt12">Data from API and passed to template from controller</h5>
-            <pre>{{ dump(list_from_controller) }}</pre>
+    {# API example #}
+    <div class="card-header">
+        <h5>{{ 'API example'|trans }}</h5>
+    </div>
+    <div class="card-body">
+        <h5 class="pt-2">Data from API and passed to the template from the controller</h5>
+        <pre>{{ dump(list_from_controller) }}</pre>
 
-            <h5 class="pt12">Data from API accessed directly from template file</h5>
-            {% set list = admin.example_get_something({"microsoft":1}) %}
-            <pre>{{ dump(list) }}</pre>
-        </div>
+        <h5 class="pt-2">Data from API accessed directly from the template file</h5>
+        {% set list = admin.example_get_something({"microsoft":1}) %}
+        <pre>{{ dump(list) }}</pre>
+    </div>
     {% endif %}
 
     <!-- Second card -->
-	<div class="card-header">
-		<h5>{{ 'README'|trans }}</h5>
+    <div class="card-header">
+        <h5>{{ 'README'|trans }}</h5>
     </div>
     <div class="card-body markdown">
         {{ guest.example_readme | markdown }}
     </div>
 </div>
+
+<script>
+    // Send a request to the backend and ask if the staff member has the `do_something` permission key.
+    function checkCanDoSomething() {
+        API.admin.post('example/can_do_something', {}, function(result) {
+            FOSSBilling.message('Great, you did something!');
+        },
+        function(result){
+            FOSSBilling.message(result.message, 'error');
+        });
+    };
+
+    // Use the API to check and see if the staff member has a specifc permission constraint under the `a_select` key.
+    function checkConstraintPermission() {
+        var e = document.getElementById('check-against');
+        API.admin.post('example/check_select', { constraint: e.value }, function(result) {
+            FOSSBilling.message('You do have that permission');
+        },
+        function(result){
+            FOSSBilling.message('You do not have that permission', 'error');
+        });
+    };
+</script>
 {% endblock %}

@@ -33,6 +33,37 @@ class Service
     }
 
     /**
+     * Any module may define this function to return an array of permission keys that are related to it.
+     * You may define either a `bool` or a `select` permission type.
+     * Modules do not need to define this function.
+     * 
+     * We've included an example of how to check the permissions under the `/api/Admin.php` file and some front-end usage under `/html_admin/mod_example_index.html.twig`
+     * 
+     * @return array 
+     */
+    public function getModulePermissions(): array
+    {
+        return [
+            'do_something' => [
+                'type' => 'bool',
+                'display_name' => 'Do something',
+                'description' => 'Allows the staff member to do something',
+            ],
+            'a_select' => [
+                'type' => 'select',
+                'display_name' => 'A select',
+                'description' => 'This is an example of the select permission type',
+                'options' => [
+                    'value_1' => 'Value 1',
+                    'value_2' => 'Value 2',
+                    'value_3' => 'Value 3',
+                ]
+            ],
+            'manage_settings' => [], // Tells FOSSBilling that there should be a permission key to manage the module's settings (admin/extension/settings/example)
+        ];
+    }
+
+    /**
      * Method to install the module. In most cases you will use this
      * to create database tables for your module.
      *

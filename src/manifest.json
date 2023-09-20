@@ -1,5 +1,5 @@
 {
-  "id": "Example",
+  "id": "example",
   "type": "mod",
   "name": "Example",
   "description": "An example module for developers to get started",
@@ -8,5 +8,5 @@
   "author": "FOSSBilling",
   "author_url": "https://fossbilling.org/",
   "license": "Apache 2.0 - https://www.apache.org/licenses/LICENSE-2.0",
-  "version": "0.0.3"
+  "version": "0.0.4"
 }
