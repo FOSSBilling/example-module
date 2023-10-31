@@ -60,7 +60,7 @@ class Admin extends \Api_Abstract
          * The third parameter is the name of the permission key we are checking (`do_something`)
          */
         if (!$staff_service->hasPermission(null, 'example', 'do_something')) {
-            throw new \Box_Exception('You do not have permission to perform this action', [], 403);
+            throw new \FOSSBilling\InformationException('You do not have permission to perform this action', [], 403);
         }
 
         return true;
@@ -86,7 +86,7 @@ class Admin extends \Api_Abstract
          * The final parameter is the contraint we want to apply for the staff member's permission. When using the select type pemission, this is how you check if they have a specific one. (`value_1` for example)
          */
         if (!$staff_service->hasPermission(null, 'example', 'a_select', $data['constraint'])) {
-            throw new \Box_Exception('You do not have permission to perform this action', [], 403);
+            throw new \FOSSBilling\InformationException('You do not have permission to perform this action', [], 403);
         }
 
         return true;
