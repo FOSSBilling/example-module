@@ -23,6 +23,8 @@
 
 namespace Box\Mod\Example;
 
+use FOSSBilling\InformationException;
+
 class Service
 {
     protected $di;
@@ -72,7 +74,7 @@ class Service
      *
      * @return bool
      *
-     * @throws \Box_Exception
+     * @throws InformationException
      */
     public function install(): bool
     {
@@ -80,7 +82,7 @@ class Service
         $db = $this->di['db'];
         $db->exec('SELECT NOW()');
 
-        // throw new \Box_Exception("Throw exception to terminate module installation process with a message", array(), 123);
+        // throw new InformationException("Throw exception to terminate module installation process with a message", array(), 123);
         return true;
     }
 
@@ -93,11 +95,11 @@ class Service
      *
      * @return bool
      *
-     * @throws \Box_Exception
+     * @throws InformationException
      */
     public function uninstall(): bool
     {
-        // throw new \Box_Exception("Throw exception to terminate module uninstallation process with a message", array(), 124);
+        // throw new InformationException("Throw exception to terminate module uninstallation process with a message", array(), 124);
         return true;
     }
 
@@ -110,11 +112,11 @@ class Service
      *
      * @return bool
      *
-     * @throws \Box_Exception
+     * @throws InformationException
      */
     public function update(array $manifest): bool
     {
-        // throw new \Box_Exception("Throw exception to terminate module update process with a message", array(), 125);
+        // throw new InformationException("Throw exception to terminate module update process with a message", array(), 125);
         return true;
     }
 
@@ -173,7 +175,7 @@ class Service
      *
      * @return void
      *
-     * @throws \Box_Exception
+     * @throws InformationException
      */
     public static function onEventClientLoginFailed(\Box_Event $event): void
     {
@@ -223,7 +225,7 @@ class Service
 
         // if client gets funky, we block him
         if ($meta->meta_value > 30) {
-            throw new \Box_Exception('You have failed to login too many times. Contact support.');
+            throw new InformationException('You have failed to login too many times. Contact support.');
         }
     }
 
