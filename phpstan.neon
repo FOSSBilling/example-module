@@ -9,3 +9,4 @@ parameters:
 		- FOSSBilling
 	ignoreErrors:
 		- '#^Function __trans not found\.$#'
+        - '#^Constant PATH_MODS not found\.$#'
