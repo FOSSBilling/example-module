@@ -5,7 +5,7 @@ parameters:
 		- FOSSBilling
 	excludePaths:
 		analyse:
-        - src/vendor (?)
+		- src/vendor (?)
 		- FOSSBilling
 	ignoreErrors:
 		- '#^Function __trans not found\.$#'
