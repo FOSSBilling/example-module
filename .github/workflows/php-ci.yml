@@ -46,14 +46,14 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Get the Latest FOSSBilling Release Tag
+      - name: Get Latest FOSSBilling Release Tag
         uses: oprypin/find-latest-tag@v1
         with:
           repository: "FOSSBilling/FOSSBilling"
           releases-only: true
         id: get_id
 
-      - name: Checkout The Release tag
+      - name: Checkout Release tag
         uses: actions/checkout@v6
         with:
           repository: "FOSSBilling/FOSSBilling"
