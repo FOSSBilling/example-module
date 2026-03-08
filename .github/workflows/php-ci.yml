@@ -26,6 +26,7 @@ jobs:
       - name: Install Composer Dependencies
         uses: php-actions/composer@v6
         with:
+          args: --working-dir=FOSSBilling
           dev: no
           php_version: 8.3
           php_extensions: intl
@@ -62,6 +63,7 @@ jobs:
       - name: Install Composer Dependencies
         uses: php-actions/composer@v6
         with:
+          args: --working-dir=FOSSBilling
           dev: no
           php_version: 8.3
           php_extensions: intl
