@@ -28,6 +28,7 @@ jobs:
         with:
           args: --working-dir=FOSSBilling
           dev: no
+          php_extensions: intl
 
       - name: Run PHPStan
         uses: php-actions/phpstan@v3
@@ -62,6 +63,7 @@ jobs:
         with:
           args: --working-dir=FOSSBilling/
           dev: no
+          php_extensions: intl
 
       - name: Run PHPStan
         uses: php-actions/phpstan@v3
