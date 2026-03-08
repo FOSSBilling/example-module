@@ -34,7 +34,8 @@ jobs:
       - name: Run PHPStan
         uses: php-actions/phpstan@v3
         with:
-          php_version: latest
+          version: latest
+          php_version: 8.3
           configuration: phpstan.neon
           memory_limit: 512M
 
@@ -70,6 +71,7 @@ jobs:
       - name: Run PHPStan
         uses: php-actions/phpstan@v3
         with:
-          php_version: latest
+          version: latest
+          php_version: 8.3
           configuration: phpstan.neon
           memory_limit: 512M
