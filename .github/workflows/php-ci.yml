@@ -15,10 +15,10 @@ jobs:
 
     name: PHPStan - FOSSBilling Preview
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
 
       - name: Checkout FOSSBilling Source Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           repository: "FOSSBilling/FOSSBilling"
           path: "FOSSBilling"
@@ -44,7 +44,7 @@ jobs:
 
     name: PHPStan - FOSSBilling Release
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
 
       - name: Get the Latest FOSSBilling Release Tag
         uses: oprypin/find-latest-tag@v1
@@ -54,7 +54,7 @@ jobs:
         id: get_id
 
       - name: Checkout The Release tag
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           repository: "FOSSBilling/FOSSBilling"
           path: "FOSSBilling"
