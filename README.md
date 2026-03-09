@@ -20,6 +20,11 @@ All modules can communicate with the other modules using their API endpoints.
 * **html_admin** - A folder holding front-end templates (`*.html.twig files`) for the administrator panel.
 * **html_client** - A folder holding front-end templates (`*.html.twig files`) for the client / guest area.
 
+### Commands CLI folder (Optional)
+
+* **ClassConsole.php** - A file where you can run CLI console by ```php console.php your:cli```
+* Multiple files can be added to the folder as long as they have different names and do not conflict with existing ones.
+
 ### Controller folder
 
 * **Admin.php** - Defines the module's routes and navigation items for the administrator panel.
